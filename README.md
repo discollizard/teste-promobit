@@ -12,7 +12,7 @@ teste pratico promobit
  ```
    npm install
 
-   npm run dev
+   npm run watch
  ```
 
  - Para rodas as migrações (habilitar o banco de dados), rode o seguinte comando:
