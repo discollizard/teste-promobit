@@ -1,6 +1,6 @@
 <template>
     <Link :href="'/'">
-        <img src="img/promobit.jfif" width="100" height="100" alt="Logo promobit">
+        <img src="img/logo.png" width="125" height="125" alt="Logo Promobit">
     </Link>
 </template>
 

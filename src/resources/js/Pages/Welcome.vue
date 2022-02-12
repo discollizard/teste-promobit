@@ -1,12 +1,10 @@
 <template>
     <div>
         <Head title="Welcome" />
-        <div class="welcome--span absolute greetings w-100 h-100">
-            Bem-vindo ao CRUD de produtos promobit
-        </div>
-        <div class="flex absolute text-center inset-1/2 justify-center">
-            
-            <div v-if="canLogin" class="hidden fixed px-6 py-4 sm:block">
+
+        <h1 class="greetings">Bem-vindo ao CRUD de teste da Promobit!</h1>
+        <div class="absolute flex w-100 inset-1/2 justify-center text-center">
+            <div v-if="canLogin">
                 <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
                     Dashboard
                 </Link>
@@ -16,7 +14,7 @@
                         Log in
                     </Link>
 
-                    <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                    <Link v-if="canRegister" :href="route('register')" class="text-sm text-gray-700 underline">
                         Register
                     </Link>
                 </template>
@@ -27,11 +25,10 @@
 
 <style scoped>
     .greetings{
+        font-size: 2vw;
+        position: absolute;
         top: 45%;
         left: 30%;
-    }
-    .welcome--span{
-        font-size: 2vw;
     }
     .bg-gray-100 {
         background-color: #f7fafc;
