@@ -2,7 +2,10 @@
     <app-layout title="Dashboard">
         <template #header>
             <div class="flex justify-between">
-                <a href="/create-product" class="font-semibold text-xl text-blue-700 leading-tight">
+                <a href="/see-tags" class="font-semibold text-xl text-blue-700 leading-tight">
+                    Ver todas as tags
+                </a>
+                <a href="/create-tag" class="font-semibold text-xl text-blue-700 leading-tight">
                     Criar nova tag
                 </a>
                 <a href="/create-product" class="font-semibold text-xl text-blue-700 leading-tight">

@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Criar Produto">
+    <app-layout :title="pageLabel">
         <template #header>
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -14,7 +14,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                   <product-form />
+                   <tag-form />
                 </div>
             </div>
         </div>
@@ -24,18 +24,17 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-    import ProductForm from '@/Jetstream/ProductForm.vue'
+    import TagForm from '@/Jetstream/TagForm.vue'
 
     export default defineComponent({
         components: {
             AppLayout,
-            ProductForm,
+            TagForm,
         },
         computed: {
             pageLabel(){
-                return this.$page.props.hasOwnProperty('productToEdit') ? 'Edição de produtos': 'Criação de produtos'
+                return this.$page.props.hasOwnProperty('tagToEdit') ? 'Edição de tag': 'Criação de tag'
             }
         }
     })
 </script>
-

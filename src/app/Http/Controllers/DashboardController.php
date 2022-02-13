@@ -41,4 +41,23 @@ class DashboardController extends Controller
             'productToEdit' => $productToEdit[0]
         ]);
     }
+
+    public function seeTagsPage(){
+        $allTags = Tag::all();
+        return Inertia::render('TagsPage', [
+            'allTags' => $allTags
+        ]);
+    }
+
+    public function createTagPage(){
+        return Inertia::render('CreateTag');
+    }
+
+    public function editTagPage($id_tag){
+        $tagToEdit = Tag::findOrFail($id_tag);
+
+        return Inertia::render('CreateTag', [
+            'tagToEdit' => $tagToEdit
+        ]);
+    }
 }

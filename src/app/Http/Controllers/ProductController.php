@@ -19,8 +19,6 @@ class ProductController extends Controller
         $newProduct->name = $request->name;
         $newProduct->save();
         
-        //se houver tempo, levantar uma salvaguarda de save aqui e mostrar na página caso não salve
-        
         $newProductId = $newProduct->id;
 
         foreach($request->tags as $tag){
@@ -30,7 +28,6 @@ class ProductController extends Controller
 
             $newProductTag->save();
             
-            //aqui tambem
         }
 
         return redirect()->route('dashboard');

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{DashboardController, ProductController};
+use App\Http\Controllers\{DashboardController, ProductController, TagController};
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,10 +33,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/edit-product/{product_id}', [DashboardController::class, 'editProductPage']);
 
 
+    Route::get('/see-tags', [DashboardController::class, 'seeTagsPage'])->name('tag_dashboard');
+    Route::get('/create-tag', [DashboardController::class, 'createTagPage']);
+    Route::get('/edit-tag/{tag_id}', [DashboardController::class, 'editTagPage']);
+
+
     //produtos
     Route::post('/save-product', [ProductController::class, 'saveProduct']);
     Route::post('/update-product', [ProductController::class, 'updateProduct']);
     Route::get('/delete-product/{product_id}', [ProductController::class, 'deleteProduct']);
 
+    //tags
+    Route::post('/save-tag', [TagController::class, 'saveTag']);
+    Route::post('/update-tag', [TagController::class, 'updateTag']);
+    Route::get('/delete-tag/{tag_id}', [TagController::class, 'deleteTag']);
 
 });
