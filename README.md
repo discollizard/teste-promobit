@@ -15,7 +15,7 @@ teste pratico promobit
    npm run watch
  ```
 
- - Para rodas as migrações (habilitar o banco de dados), rode o seguinte comando:
+ - Para rodas as migrações (habilitar o banco de dados), rode o seguinte comando (dentro da pasta /src):
  ```
     docker-compose exec php php /var/www/html/artisan migrate
  ```

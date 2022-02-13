@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="p-4 flex justify-between sm:px-20 bg-white border-b border-gray-200">
-            <div>
-                <jet-application-logo class="block h-12 w-auto" />
+            <div class="text-xl pt-2">
+                <span>Todos os produtos</span>
             </div>
 
-            <div class="text-xl pt-2 ">
+            <div class="text-xl pt-2">
                 <a href="/report" class=" ml-4 text-blue-700">Gerar relatório</a>
             </div>
         </div>
@@ -26,46 +26,20 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <!-- FOREACH NO OBJETO DO PRODUTO -->
-                        <tr>
+                        <tr v-for="product in $page.props.productsWithTags" :key="product.id">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">NOME DO PRODUTO</div>
+                                    <div class="text-sm font-medium text-gray-900">{{product.name}}</div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap flex flex-wrap grow justify-between">
-                                <!-- FOREACH NAS TAGS DO PRODUTO -->
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 1</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 2</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 3</div>
+                                <div v-for="tag in product.tags" :key="tag.id" class="text-sm bg-gray-200 text-gray-900 p-1">{{tag.name}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                             <a href="/edit/ID_DO_PRODUTO" class="hover:text-blue-700">Editar</a> 
+                             <a :href="`/edit-product/${product.id}`" class="hover:text-blue-700">Editar</a> 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="/delete/ID_DO_PRODUTO" class="text-red-600 hover:text-red-900">Deletar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">NOME DO PRODUTO</div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap flex flex-wrap justify-between">
-                                <!-- FOREACH NAS TAGS DO PRODUTO -->
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 1</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 2</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 3</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 1</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 2</div>
-                                <div class="text-sm bg-gray-200 text-gray-900 p-1">TAG 3</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                             <a href="/edit/ID_DO_PRODUTO" class="hover:text-blue-700">Editar</a> 
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="/delete/ID_DO_PRODUTO" class="text-red-600 hover:text-red-900">Deletar</a>
+                                <a :href="`/delete-product/${product.id}`" class="text-red-600 hover:text-red-900">Deletar</a>
                             </td>
                         </tr>
                     </tbody>

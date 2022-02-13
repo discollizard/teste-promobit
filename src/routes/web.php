@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\{DashboardController, ProductController};
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //dashboard e navegação
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/create-product', [DashboardController::class, 'createProductPage']);
+
+    //produtos
+    Route::post('/save-product', [ProductController::class, 'saveProduct']);
+    Route::get('/delete-product/{product_id}', [ProductController::class, 'deleteProduct']);
 
 
 });

@@ -2,9 +2,9 @@
     <app-layout title="Dashboard">
         <template #header>
             <div class="flex justify-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Todos os produtos
-                </h2>
+                <a href="/create-product" class="font-semibold text-xl text-blue-700 leading-tight">
+                    Criar nova tag
+                </a>
                 <a href="/create-product" class="font-semibold text-xl text-blue-700 leading-tight">
                     Criar novo produto
                 </a>
