@@ -36,6 +36,28 @@ class ProductController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function updateProduct(Request $request){
+        $validator = $request->validate([
+            'name' => 'required',
+            'tags' => 'required'
+        ]);
+
+        $productToUpdate = Product::findOrFail($request->id);
+        $productToUpdate->name = $request->name;
+        if($productToUpdate->save()){
+            ProductTag::where('product_id', $request->id)->delete();
+
+            foreach($request->tags as $tag){
+                $productTagToInsert = new ProductTag;
+                $productTagToInsert->product_id = $productToUpdate->id;
+                $productTagToInsert->tag_id = $tag;
+                $productTagToInsert->save();
+            }
+            
+            return redirect()->route('dashboard');
+        }
+    }
+
     public function deleteProduct($product_id){
         $productTagsDeleted = ProductTag::where('product_id', $product_id)->delete();
         

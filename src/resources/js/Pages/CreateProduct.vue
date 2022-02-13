@@ -3,7 +3,7 @@
         <template #header>
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Criação de produtos
+                    {{pageLabel}}
                 </h2>
                 <a href="/dashboard" class="font-semibold text-xl text-blue-700 leading-tight">
                     Voltar ao dashboard
@@ -31,6 +31,11 @@
             AppLayout,
             ProductForm,
         },
+        computed: {
+            pageLabel(){
+                return this.$page.props.hasOwnProperty('productToEdit') ? 'Edição de produtos': 'Criação de produtos'
+            }
+        }
     })
 </script>
 

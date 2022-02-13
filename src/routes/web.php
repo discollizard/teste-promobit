@@ -30,9 +30,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //dashboard e navegação
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/create-product', [DashboardController::class, 'createProductPage']);
+    Route::get('/edit-product/{product_id}', [DashboardController::class, 'editProductPage']);
+
 
     //produtos
     Route::post('/save-product', [ProductController::class, 'saveProduct']);
+    Route::post('/update-product', [ProductController::class, 'updateProduct']);
     Route::get('/delete-product/{product_id}', [ProductController::class, 'deleteProduct']);
 
 

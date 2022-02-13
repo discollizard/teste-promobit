@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <button @click="registerProduct()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        Cadastrar
+                                        {{buttonLabel}}
                                     </button>
                                 </div>
                             </main>
@@ -52,15 +52,33 @@
                 productName: '',
             }
         },
+        created(){
+            if(this.$page.props.hasOwnProperty('productToEdit')){
+                this.productName = this.$page.props.productToEdit.name
+                this.tagsToRegister = this.$page.props.productToEdit.tags
+            }
+        },
         methods: {
             registerProduct(){
+                let url = '/save-product'
                 let payload = reactive({
                     name: this.productName,
                     tags: this.tagsToRegister
                 })
 
-                Inertia.post('/save-product', payload)
+                if(this.$page.props.hasOwnProperty('productToEdit')){
+                    url = '/update-product'
+                    payload = {...payload, id: this.$page.props.productToEdit.id}
+                }
+
+                Inertia.post(url, payload)
             }
+        },
+        computed:{
+            buttonLabel(){
+                return this.$page.props.hasOwnProperty('productToEdit') ? 'Editar' : 'Cadastrar'
+            },
+            
         }
     })
 </script>

@@ -24,4 +24,21 @@ class DashboardController extends Controller
             'tags' => Tag::get(['id as value', 'name as label'])
         ]);
     }
+    
+    public function editProductPage($id_product){
+
+        $productToEdit = Product::find($id_product)->with('tags')->get()->toArray();
+
+        //formating properly to display on form
+        foreach($productToEdit as $llave => $prod){
+            foreach($prod['tags'] as $key => $tag){
+                $productToEdit[$llave]['tags'][$key] = $tag['id'];
+            }
+        }
+        
+        return Inertia::render('CreateProduct', [
+            'tags' => Tag::get(['id as value', 'name as label']),
+            'productToEdit' => $productToEdit[0]
+        ]);
+    }
 }
