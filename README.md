@@ -10,6 +10,8 @@ teste pratico promobit
 
  - Para instalar as dependências do framework front-end (inertia.js) e compilar as páginas, rode dentro da pasta src:
  ```
+   composer install
+
    npm install
 
    npm run watch
