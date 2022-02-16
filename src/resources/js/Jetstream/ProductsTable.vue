@@ -6,7 +6,7 @@
             </div>
 
             <div class="text-xl pt-2">
-                <a href="/report" class=" ml-4 text-blue-700">Gerar relatório</a>
+                <a href="/report" class=" ml-4 text-blue-700">Ver relatório</a>
             </div>
         </div>
 

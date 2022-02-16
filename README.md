@@ -19,3 +19,6 @@ teste pratico promobit
  ```
     docker-compose exec php php /var/www/html/artisan migrate
  ```
+
+ - OBS: Se você estiver utilizando um gerenciador de bancos (HeidiSQL, PHPMyAdmin, Beekeper, etc.), utilize o host
+ "host.docker.internal" ao acessar em vez do localhost para acessar o banco.

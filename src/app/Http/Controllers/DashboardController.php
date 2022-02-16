@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Tag;
 use App\Models\Product;
 use Inertia\Inertia;
@@ -27,7 +28,7 @@ class DashboardController extends Controller
     
     public function editProductPage($id_product){
 
-        $productToEdit = Product::find($id_product)->with('tags')->get()->toArray();
+        $productToEdit = Product::with('tags')->where('id', $id_product)->get()->toArray();
 
         //formating properly to display on form
         foreach($productToEdit as $llave => $prod){
@@ -58,6 +59,15 @@ class DashboardController extends Controller
 
         return Inertia::render('CreateTag', [
             'tagToEdit' => $tagToEdit
+        ]);
+    }
+
+    public function generateRelevanceReport(){
+        $relevanceData = DB::select(DB::raw('SELECT p.name as product_name, count(tag_id) as relevance FROM product_tag pt 
+                        LEFT JOIN product p ON p.id = pt.product_id GROUP BY pt.product_id ORDER BY relevance DESC'));
+
+        return Inertia::render('Report', [
+            'relevanceData' => $relevanceData
         ]);
     }
 }

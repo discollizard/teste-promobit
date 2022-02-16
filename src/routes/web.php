@@ -37,6 +37,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/create-tag', [DashboardController::class, 'createTagPage']);
     Route::get('/edit-tag/{tag_id}', [DashboardController::class, 'editTagPage']);
 
+    //ver relatório
+    Route::get('/report', [DashboardController::class, 'generateRelevanceReport']);
 
     //produtos
     Route::post('/save-product', [ProductController::class, 'saveProduct']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\ProductTag;
+use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
@@ -33,13 +34,14 @@ class TagController extends Controller
     } 
 
     public function deleteTag($tag_id){
+
         ProductTag::where('tag_id', $tag_id)->delete();
-        
+
         $productToDelete = Tag::find($tag_id);
         
         $productToDelete->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('tag_dashboard');
     }
 
 }
