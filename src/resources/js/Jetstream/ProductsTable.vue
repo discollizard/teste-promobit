@@ -6,9 +6,9 @@
             </div>
 
             <div class="text-xl pt-2">
-                <a href="/report" class=" ml-4 text-blue-700">Ver relatório</a>
+                <a href="/report" class="text-blue-700">Ver relatório</a>
             </div>
-        </div>
+	    </div>
 
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

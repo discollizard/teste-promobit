@@ -22,3 +22,9 @@ teste pratico promobit
 
  - OBS: Se você estiver utilizando um gerenciador de bancos (HeidiSQL, PHPMyAdmin, Beekeper, etc.), utilize o host
  "host.docker.internal" ao acessar em vez do localhost para acessar o banco.
+
+ - Comando SQL para extrair relevância (quantidade de tags atrelada a cada produto): 
+ ```
+   SELECT p.name as product_name, count(tag_id) as relevance FROM product_tag pt 
+   LEFT JOIN product p ON p.id = pt.product_id GROUP BY pt.product_id ORDER BY relevance DESC
+ ```
